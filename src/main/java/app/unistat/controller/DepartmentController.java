@@ -73,7 +73,8 @@ public class DepartmentController {
                     System.out.println("Head of " + departmentName + " department is "
                             + firstName + " " + lastName);
                 } else {
-                    System.out.println("Head of " + "'" + departmentName + "'" + " is not specified");
+                    System.out.println("Head of " + "'" + departmentName + "'"
+                            + " is not specified");
                 }
             } else {
                 System.out.println("Department " + "'" + departmentName + "'" + " is not found");
@@ -160,9 +161,9 @@ public class DepartmentController {
             Optional<Department> departmentOptional = departmentService.getByName(departmentName);
 
             if (departmentOptional.isPresent()) {
-                Long employeeCount = departmentService.getEmployeeCountForDepartment(departmentName);
-                System.out.println("The employee count for "
-                        + departmentName + " is " + employeeCount);
+                Long employeeCount = departmentService
+                        .getEmployeeCountForDepartment(departmentName);
+                System.out.println(employeeCount);
             } else {
                 System.out.println("Department " + "'" + departmentName + "'" + " is not found");
             }
