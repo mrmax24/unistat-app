@@ -52,7 +52,7 @@ public class DepartmentController {
         }
     }
 
-    private void getHeadOfDepartmentInfo(String[] tokens) {
+    public void getHeadOfDepartmentInfo(String[] tokens) {
         if (tokens[1].equals("is") && tokens[2].equals("head")
                 && tokens[3].equals("of") && tokens[4].equals("department")) {
 
@@ -78,7 +78,7 @@ public class DepartmentController {
         }
     }
 
-    private void showDepartmentStatistics(String[] tokens) {
+    public void showDepartmentStatistics(String[] tokens) {
         if (tokens != null && tokens[0].equals("Show")
                 && tokens[tokens.length - 1].equals("statistics")) {
 
@@ -110,7 +110,7 @@ public class DepartmentController {
         }
     }
 
-    private void showAverageSalaryForDepartment(String[] tokens) {
+    public void showAverageSalaryForDepartment(String[] tokens) {
         if (tokens[0].equals("Show") && tokens[1].equals("the")
                 && tokens[2].equals("average") && tokens[3].equals("salary")
                 && tokens[4].equals("for") && tokens[5].equals("the")
@@ -136,7 +136,7 @@ public class DepartmentController {
         }
     }
 
-    private void showEmployeeCountForDepartment(String[] tokens) {
+    public void showEmployeeCountForDepartment(String[] tokens) {
         if (tokens[0].equals("Show") && tokens[1].equals("count") && tokens[2].equals("of")
                 && tokens[3].equals("employee") && tokens[4].equals("for")
                 && tokens[5].equals("department")) {
@@ -162,7 +162,7 @@ public class DepartmentController {
         }
     }
 
-    private void globalSearch(String[] tokens) {
+    public void globalSearch(String[] tokens) {
         if (tokens[0].equals("Global") && tokens[1].equals("search") && tokens[2].equals("by")) {
             String template = tokens[3];
             List<String> searchResults = lectorService.globalSearch(template);
