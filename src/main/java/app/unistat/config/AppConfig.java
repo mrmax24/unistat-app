@@ -28,8 +28,6 @@ public class AppConfig {
         dataSource.setUrl(environment.getProperty("db.url"));
         dataSource.setUsername(environment.getProperty("db.user"));
         dataSource.setPassword(environment.getProperty("db.password"));
-        dataSource.setMaxTotal(-1);
-        dataSource.setMaxIdle(10);
         return dataSource;
     }
 

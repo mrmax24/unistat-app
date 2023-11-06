@@ -35,22 +35,9 @@ public class Department {
 
     public Department(String name, Lector headOfDepartment,
                       Set<Lector> lectors) {
-        this.id = id;
         this.name = name;
         this.headOfDepartment = headOfDepartment;
         this.lectors = lectors;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
     }
 
     public void setName(String name) {
@@ -67,10 +54,6 @@ public class Department {
 
     public Set<Lector> getLectors() {
         return lectors;
-    }
-
-    public void setLectors(Set<Lector> lectors) {
-        this.lectors = lectors;
     }
 
     @Override

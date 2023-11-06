@@ -1,10 +1,11 @@
 package app.unistat.controller;
 
+import app.unistat.model.Department;
 import app.unistat.service.DepartmentService;
 import app.unistat.service.LectorService;
 import java.math.BigDecimal;
 import java.util.List;
-import java.util.NoSuchElementException;
+import java.util.Optional;
 import java.util.Scanner;
 import org.springframework.stereotype.Controller;
 
@@ -62,16 +63,20 @@ public class DepartmentController {
             }
             String departmentName = departmentNameBuilder.toString().trim();
 
-            try {
-                String firstName = departmentService.getByName(departmentName).get()
-                        .getHeadOfDepartment().getFirstName();
-                String lastName = departmentService.getByName(departmentName).get()
-                        .getHeadOfDepartment().getLastName();
-                System.out.println("Head of " + departmentName + " department is "
-                        + firstName + " " + lastName);
-            } catch (NoSuchElementException e) {
-                System.out.println("Department " + "'" + departmentName + "'" + " is not found "
-                        + "or head of department is not specified");
+            Optional<Department> departmentOptional = departmentService.getByName(departmentName);
+
+            if (departmentOptional.isPresent()) {
+                Department department = departmentOptional.get();
+                if (department.getHeadOfDepartment() != null) {
+                    String firstName = department.getHeadOfDepartment().getFirstName();
+                    String lastName = department.getHeadOfDepartment().getLastName();
+                    System.out.println("Head of " + departmentName + " department is "
+                            + firstName + " " + lastName);
+                } else {
+                    System.out.println("Head of " + "'" + departmentName + "'" + " is not specified");
+                }
+            } else {
+                System.out.println("Department " + "'" + departmentName + "'" + " is not found");
             }
         } else {
             System.out.println("Invalid command format");
@@ -88,8 +93,10 @@ public class DepartmentController {
             }
             String departmentName = departmentNameBuilder.toString().trim();
 
-            try {
-                departmentService.getByName(departmentName).get();
+            Optional<Department> departmentOptional =
+                        departmentService.getByName(departmentName);
+
+            if (departmentOptional.isPresent()) {
                 Object[] departmentStatistics =
                         departmentService.getDepartmentStatistics(departmentName);
 
@@ -101,8 +108,10 @@ public class DepartmentController {
                     System.out.println("assistants - " + assistantsCount);
                     System.out.println("associate professors - " + associateProfessorsCount);
                     System.out.println("professors - " + professorsCount);
+                } else {
+                    System.out.println("Invalid department statistics");
                 }
-            } catch (NoSuchElementException e) {
+            } else {
                 System.out.println("Department " + "'" + departmentName + "'" + " is not found");
             }
         } else {
@@ -122,13 +131,14 @@ public class DepartmentController {
             }
             String departmentName = departmentNameBuilder.toString().trim();
 
-            try {
-                departmentService.getByName(departmentName).get();
+            Optional<Department> departmentOptional = departmentService.getByName(departmentName);
+
+            if (departmentOptional.isPresent()) {
                 BigDecimal averageSalaryForDepartment = BigDecimal.valueOf(departmentService
-                            .getAverageSalaryForDepartment(departmentName));
+                        .getAverageSalaryForDepartment(departmentName));
                 System.out.println("The average salary of " + departmentName
                         + " is " + averageSalaryForDepartment);
-            } catch (NoSuchElementException e) {
+            } else {
                 System.out.println("Department " + "'" + departmentName + "'" + " is not found");
             }
         } else {
@@ -147,14 +157,13 @@ public class DepartmentController {
             }
             String departmentName = departmentNameBuilder.toString().trim();
 
-            try {
-                departmentService.getByName(departmentName).get();
+            Optional<Department> departmentOptional = departmentService.getByName(departmentName);
 
-                Long employeeCount =
-                        departmentService.getEmployeeCountForDepartment(departmentName);
+            if (departmentOptional.isPresent()) {
+                Long employeeCount = departmentService.getEmployeeCountForDepartment(departmentName);
                 System.out.println("The employee count for "
                         + departmentName + " is " + employeeCount);
-            } catch (NoSuchElementException e) {
+            } else {
                 System.out.println("Department " + "'" + departmentName + "'" + " is not found");
             }
         } else {

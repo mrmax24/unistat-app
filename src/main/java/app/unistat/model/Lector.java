@@ -18,7 +18,7 @@ public class Lector {
     private Long id;
     private String firstName;
     private String lastName;
-    private String degree;
+    private Degree degree;
     private BigDecimal salary;
     @ManyToMany(mappedBy = "lectors")
     private Set<Department> departments;
@@ -26,22 +26,13 @@ public class Lector {
     public Lector() {
     }
 
-    public Lector(String firstName, String lastName, String degree,
+    public Lector(String firstName, String lastName, Degree degree,
                   BigDecimal salary, Set<Department> departments) {
-        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.degree = degree;
         this.salary = salary;
         this.departments = departments;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getFirstName() {
@@ -60,28 +51,20 @@ public class Lector {
         this.lastName = lastName;
     }
 
-    public String getDegree() {
-        return degree;
-    }
+    public enum Degree {
+        ASSISTANT("assistant"),
+        ASSOCIATE_PROFESSOR("associate professor"),
+        PROFESSOR("professor");
 
-    public void setDegree(String degree) {
-        this.degree = degree;
-    }
+        private final String value;
 
-    public BigDecimal getSalary() {
-        return salary;
-    }
+        Degree(String value) {
+            this.value = value;
+        }
 
-    public void setSalary(BigDecimal salary) {
-        this.salary = salary;
-    }
-
-    public Set<Department> getDepartments() {
-        return departments;
-    }
-
-    public void setDepartments(Set<Department> departments) {
-        this.departments = departments;
+        public String getValue() {
+            return value;
+        }
     }
 
     @Override
@@ -90,7 +73,7 @@ public class Lector {
                 + "id=" + id
                 + ", firstName='" + firstName + '\''
                 + ", lastName='" + lastName + '\''
-                + ", degree='" + degree + '\''
+                + ", degree=" + degree
                 + ", salary=" + salary
                 + ", departments=" + departments
                 + '}';
@@ -108,7 +91,7 @@ public class Lector {
         return Objects.equals(id, lector.id)
                 && Objects.equals(firstName, lector.firstName)
                 && Objects.equals(lastName, lector.lastName)
-                && Objects.equals(degree, lector.degree)
+                && degree == lector.degree
                 && Objects.equals(salary, lector.salary)
                 && Objects.equals(departments, lector.departments);
     }

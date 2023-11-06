@@ -22,11 +22,11 @@ public class DataInitializer {
     @PostConstruct
     public void initialize() {
         Lector john = new Lector("John", "Kirby",
-                "assistant", new BigDecimal("3500"), new HashSet<>());
+                Lector.Degree.ASSISTANT, new BigDecimal("3500"), new HashSet<>());
         Lector dave = new Lector("Dave", "Collins",
-                "associate professor", new BigDecimal("4500"), new HashSet<>());
+                Lector.Degree.ASSOCIATE_PROFESSOR, new BigDecimal("4500"), new HashSet<>());
         Lector anna = new Lector("Anna", "Fleming",
-                "professor", new BigDecimal("6000"), new HashSet<>());
+                Lector.Degree.PROFESSOR, new BigDecimal("6000"), new HashSet<>());
         lectorService.add(john);
         lectorService.add(dave);
         lectorService.add(anna);
