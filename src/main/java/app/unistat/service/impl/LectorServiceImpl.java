@@ -3,9 +3,8 @@ package app.unistat.service.impl;
 import app.unistat.dao.LectorDao;
 import app.unistat.model.Lector;
 import app.unistat.service.LectorService;
-import org.springframework.stereotype.Service;
-
 import java.util.List;
+import org.springframework.stereotype.Service;
 
 @Service
 public class LectorServiceImpl implements LectorService {

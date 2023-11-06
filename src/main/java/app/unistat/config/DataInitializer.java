@@ -4,11 +4,10 @@ import app.unistat.model.Department;
 import app.unistat.model.Lector;
 import app.unistat.service.DepartmentService;
 import app.unistat.service.LectorService;
-import org.springframework.stereotype.Component;
-
-import javax.annotation.PostConstruct;
 import java.math.BigDecimal;
 import java.util.HashSet;
+import javax.annotation.PostConstruct;
+import org.springframework.stereotype.Component;
 
 @Component
 public class DataInitializer {

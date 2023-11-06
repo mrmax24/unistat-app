@@ -3,9 +3,8 @@ package app.unistat.service.impl;
 import app.unistat.dao.DepartmentDao;
 import app.unistat.model.Department;
 import app.unistat.service.DepartmentService;
-import org.springframework.stereotype.Service;
-
 import java.util.Optional;
+import org.springframework.stereotype.Service;
 
 @Service
 public class DepartmentServiceImpl implements DepartmentService {

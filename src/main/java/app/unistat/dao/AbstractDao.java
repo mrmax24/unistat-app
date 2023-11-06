@@ -46,6 +46,7 @@ public abstract class AbstractDao<T> {
                     + clazz.getSimpleName() + ", name: " + id, e);
         }
     }
+
     public List<T> getAll() {
         try (Session session = factory.openSession()) {
             return session.createQuery("from " + clazz.getSimpleName(), clazz).getResultList();

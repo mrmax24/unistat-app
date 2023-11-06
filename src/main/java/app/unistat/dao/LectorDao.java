@@ -1,7 +1,6 @@
 package app.unistat.dao;
 
 import app.unistat.model.Lector;
-
 import java.util.List;
 
 public interface LectorDao {

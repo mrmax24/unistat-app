@@ -1,7 +1,6 @@
 package app.unistat.dao;
 
 import app.unistat.model.Department;
-
 import java.util.Optional;
 
 public interface DepartmentDao {
