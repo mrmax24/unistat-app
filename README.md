@@ -17,6 +17,7 @@ The project has a Three-Tier Architecture:
 |:-----------------------|:---------|
 | `JDK`                  | `17`     |
 | `Maven`                | `4.0.0`  |
+| `Spring Boot` | `2.5.4` |
 | `Spring Boot Data JPA` | `2.5.4` |
 | `JUnit`                | `4.13` |
 | `Mockito`              | `3.11.2` |
